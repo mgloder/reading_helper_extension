@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reading Helper</title>
+  <style>
+    body {
+      width: 400px;
+      height: 600px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .config-section {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .config-section label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .config-section input, 
+    .config-section select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    #save-config {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    #save-config:hover {
+      background-color: #45a049;
+    }
+
+    #chat-history {
+      flex-grow: 1;
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      overflow-y: auto;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user-message {
+      background-color: #007bff;
+      color: white;
+      margin-left: auto;
+    }
+
+    .ai-message {
+      background-color: #e9ecef;
+      color: #333;
+      margin-right: auto;
+    }
+
+    .input-container {
+      display: flex;
+      gap: 10px;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #user-input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      resize: none;
+      font-size: 14px;
+    }
+
+    #send-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    #send-button:hover {
+      background-color: #0056b3;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 3px;
+    }
+
+    /* Add smooth scrollbar for chat history */
+    #chat-history::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #chat-history::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    #chat-history::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    #chat-history::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="config-section">
+      <label for="api-key">OpenAI API Key:</label>
+      <input type="password" id="api-key" placeholder="sk-...">
+      <label for="model">Model:</label>
+      <select id="model">
+        <option value="gpt-4o">GPT-4o</option>
+        <option value="gpt-4o-mini">GPT-4o Mini</option>
+      </select>
+      <button id="save-config">Save Configuration</button>
+    </div>
+    
+    <div id="chat-history"></div>
+    
+    <div class="input-container">
+      <textarea id="user-input" rows="2" placeholder="Ask your question..."></textarea>
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 
